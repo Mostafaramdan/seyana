@@ -5,20 +5,114 @@
             <div class="col">
                 <div class="card " >
                     <div class="card-body">
-                        <h5 class="card-title">الدولة   : {{ record.country ? record.country.name_ar :'' }}</h5>
-                        <h5 class="card-title">سياسة الاستخدام بالعربي    : {{ record.policyTerms_ar }}</h5>
-                        <h5 class="card-title">سياسة الاستخدام بالانجليزي    : {{ record.policyTerms_en }}</h5>
-                        <h5 class="card-title"> عن التطبيق بالعربي    : {{ record.aboutUs_ar }}</h5>
-                        <h5 class="card-title"> عن التطبيق بالانجليزي    : {{ record.aboutUs_en }}</h5>
-                        <h5 class="card-title">سياسة الاستخدام بالعربي    : {{ record.privacy_ar }}</h5>
-                        <h5 class="card-title">سياسة الاستخدام بالانجليزي    : {{ record.privacy_en }}</h5>
-                        <h5 class="card-title">الرسوم : {{ record.fees }}</h5>
-                        <h5 class="card-title">الايميلات    :
-                            <span v-for="(phone, index) in record.phones" :key="index"> - ({{phone}})  </span>
-                        </h5>
-                        <h5 class="card-title">ارقام التليفونات    :
-                            <span v-for="(email, index) in record.emails" :key="index"> - ({{email}})  </span>
-                        </h5>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >الدولة : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{ record.country ? record.country.name_ar :'' }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  شروط واحكام المستخدمين  بالعربي : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.policyTerms_ar }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  شروط واحكام المستخدمين  بالانجليزي : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.policyTerms_en }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  شروط واحكام المندوبين  بالعربي : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.terms_provider_ar }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  شروط واحكام المندوبين  بالانجليزي : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.terms_provider_en }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  عن التطبيق بالعربي : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.aboutUs_ar }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  عن التطبيق   بالانجليزي : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.aboutUs_en }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >    الرسوم     : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.fees }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >    الضريبة     : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.tax }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >    القيمة المضافة     : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.value_added_tax }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >    ارقام التليفونات     : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> <span v-for="(phone, index) in record.phones" :key="index"> - ({{phone}})  </span></b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >    الايميلات       : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> <span v-for="(email, index) in record.emails" :key="index"> - ({{email}})  </span></b>
+                            </div>
+                        </div>
+                        <hr>
                     </div>
                 </div>
             </div>

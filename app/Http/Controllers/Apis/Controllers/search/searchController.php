@@ -20,7 +20,7 @@ class searchController extends index
         self::$request->districtId?  self::filterByCity() :null;// filter by city
         self::$request->rate?  self::filterByRate() :null;// filter by rate
         self::$request->isCompanyProvider ?  self::isCompanyProvider() :null;// filter by rate
-        self::$request->location ?  self::filterByNearset() :null;// filter by rate
+        // self::$request->location ?  self::filterByNearset() :null;// filter by rate
 
         self::$request->categoryIds?  self::filterByCategories() :null;// filter by category
         self::sort() ;// sort by and sort type
@@ -46,8 +46,9 @@ class searchController extends index
 
     public static function filterByCategories()
     {
-        $categoryIds = array_map('intval',self::$request->categoryIds);
-        self::$records->whereJsonContains('categories_ids',$categoryIds);
+        self::$records->whereHas('providers_categories',function($q){
+            return $q->whereIn('categories_id',self::$request->categoryIds);
+        });
     }
     public static function filterByRate()
     {
@@ -64,7 +65,7 @@ class searchController extends index
 
     public static function filterByCity()
     {
-        self::$records->where('city_id', self::$request->districtId);
+        self::$records->where('regions_id', self::$request->districtId);
     }
     public static function filterByNearset()
     {

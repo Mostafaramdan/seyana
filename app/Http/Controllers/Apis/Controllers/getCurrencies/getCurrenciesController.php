@@ -12,11 +12,10 @@ class getCurrenciesController extends index
 {
     public static function api()
     {
-        $records=  currencies::allActive();
+        $records=  currencies::where('is_active',1)->get();
         return [
-            "status"=>$records->forPage(self::$request->page+1,self::$itemPerPage)->count()?200:204,
-            "totalPages"=>ceil($records->count()/self::$itemPerPage),
-            "currencies"=>objects::ArrayOfObjects($records->forPage(self::$request->page+1,self::$itemPerPage),"currency"),
+            "status"=>$records->count()?200:204,
+            "currencies"=>objects::ArrayOfObjects($records,"currency"),
         ];
     }
 }

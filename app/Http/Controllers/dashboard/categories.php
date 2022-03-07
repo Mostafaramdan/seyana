@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use Illuminate\Http\Request;
 use App\Models\categories as model;
+use App\Models\countries;
 
 class categories extends dashboard
 
@@ -14,7 +15,9 @@ class categories extends dashboard
     }
     public function index(Request $request)
     {
-        $records= $this->model::query();
+        $records= $this->model::when($request->countries_id,function($q) use ($request){
+            return $q->where('countries_id',$request->countries_id);
+        });
         if($request->search){
             $records->where('name_ar','like','%'.$request->search.'%')
                     ->orWhere('name_en','like','%'.$request->search.'%');
@@ -28,6 +31,7 @@ class categories extends dashboard
             "status"=>$records->count()?200:204,
             "totalPages"=>$totalPages,
             "records"=>$records,
+            'countries'=>countries::find($this->model::groupBy('countries_id')->pluck('countries_id')->toArray())
         ]);
     }
     public function getAll()

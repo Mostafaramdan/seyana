@@ -95,6 +95,17 @@
             >
         </dropdown-menu>
         <hr>
+         <hr>
+        <dropdown-menu
+            model="regions"
+            url='dropdown/districts/regions'
+            @choosen='record.regions_id = $event'
+            :records_id='record.regions_id'
+            column='name_ar'
+            label='المنقطة'
+            >
+        </dropdown-menu>
+        <hr>
         <h3> اشتراك مزود الخدمة</h3>
         <br>
         <div class="form-check ">

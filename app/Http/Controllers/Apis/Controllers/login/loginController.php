@@ -12,6 +12,18 @@ class loginController extends index
 {
     public static function api()
     {
+        if(self::$account->getTable() == 'users' &&  self::$request->type == 'providers'){
+            return [
+                'status'=>421,
+                'message'=>self::$messages['validateAccount']['421']
+            ];
+        }
+        if(self::$account->getTable() == 'providers' &&  self::$request->type == 'users'){
+            return [
+                'status'=>420,
+                'message'=>self::$messages['validateAccount']['420']
+            ];
+        }
         $token = helper::login(self::$account,self::$request->password);
         if(  $token){
             if(self::$request->has('lang'))

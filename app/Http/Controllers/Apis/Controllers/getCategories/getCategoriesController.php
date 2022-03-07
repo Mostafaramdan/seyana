@@ -12,7 +12,11 @@ class getCategoriesController extends index
 {
     public static function api()
     {
-        $records=  categories::where('is_active',1)->get();
+        $records=  categories::where('is_active',1)
+                    ->when(self::$request->countryId,function($q){
+                        return $q->where('countries_id',self::$request->countryId);
+                    })
+                    ->get();
         
         return [
             "status"=>$records->count()?200:204,

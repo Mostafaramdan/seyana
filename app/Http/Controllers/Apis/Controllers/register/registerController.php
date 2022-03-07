@@ -25,14 +25,14 @@ class registerController extends index
         $create = [
             'name'=>$request->name,
             'email'=>$request->email,
+            'currencies_id'=>$request->currencyId,
             'phone'=>$request->phone,
             'locations_id'=>$location->id??null,
-            'regions_id'=>$request->cityId,
+            'regions_id'=>$request->districtId,
             'password'=>Hash::make($request->password),
             'apiToken'=>helper::UniqueRandomXChar(70,['users','providers']),
             'fireBaseToken'=>$request->fireBaseToken,
             'lang'=>$request->lang??'ar',
-
         ];
         if($request->image){
             $create['images_id']=images::create(['image'=>helper::base64_image($request->image,'users')])->id;
@@ -40,10 +40,10 @@ class registerController extends index
         $record= users::create($create);
         $session = sessions::createUpdate([
                 $record->getTable().'_id' =>$record->id,
-                // 'code'=>helper::RandomXDigits(5)
-                'code'=>1234
+                'code'=>helper::RandomXDigits(4)
+                // 'code'=>1234
             ]);
-        // helper::sendSms( $record->phone, $session->code );
+        helper::sendSms( $record->phone, $session->code );
         $token = helper::UniqueRandomXChar(69,'apiToken');
         tokens::create([
             'apiToken'=>$token,

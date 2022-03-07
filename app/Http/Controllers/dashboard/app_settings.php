@@ -34,4 +34,15 @@ class app_settings extends dashboard
     {
         return response()->json(['records'=>$this->model::all()]);
     }
+    public function store(Request $request)
+    {
+        if( $this->model::where('countries_id',$request->countries_id)->count()){
+            return response()->json([
+                'status'=>406,
+                'message'=>'تم إدخال اعدادات لهذه الدولة مسبقا'
+            ]);
+            }
+        $this->model::create($request->all());
+        return response()->json(['status'=>200]);
+    }
 }

@@ -41,6 +41,9 @@ class generalHelp extends index
 
 	public static function base64_image($image_string,$folderName)
 	{
+		if(!Str::contains($image_string,'base64')){
+			return $image_string ;
+		}
 		if(!$image_string)return null;
 			// CHECK IF FOLDER EXIST
 			$folderPath="uploads/{$folderName}/";
@@ -95,8 +98,8 @@ class generalHelp extends index
 			$session=sessions::where('tmp_token',$tmpToken)->first();
 			if($session==null)return null;
 			foreach($models as $model)
-				if($session->$model!=null)
-					return $session->$model;
+				if($session->{Str::singular($model)})
+					return $session->{Str::singular($model)};
 		}elseif($tmp_phone != null){
 			$session=sessions::where('tmp_phone',$tmp_phone)->first();
 			if($session==null)return null;

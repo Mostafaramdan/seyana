@@ -12,6 +12,8 @@ return [
             "418"=>"تم مسح هذا الحساب",
             "402"=>"تم الغاء تنشيط هذا الحساب",
             "419"=>"لم يتم التحقق من الحساب",
+            "420"=>"من فضلك هذا الجوال مسجل كمزود خدمة يرجى ادخال جوال مستخدم !",
+            '421'=>'من فضلك هذا الجوال مسجل كمستخدم خدمة يرجى ادخال جوال مزود خدمة !'
         ],
         "login"=>[
             "200"=>"تم تسجيل الدخول بنجاح",
@@ -89,6 +91,8 @@ return [
             "418"=>"this account has been deleted",
             "402"=>"this account has been deactivate",
             "419"=>"this account hasn't been verified",
+            '420'=>'Please this phone is registered as a provider, Please enter a user phone !',
+            '421'=>'Please this phone is registered as a user, Please enter a provider phone !',
         ],
         "login"=>[
             "200"=>"login successfully",

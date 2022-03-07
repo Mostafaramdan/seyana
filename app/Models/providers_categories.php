@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class providers_categories extends Model
 {
     use HasFactory;
-    public $guarded =[],$timestamps=false, $appends= ['images'];
+    public $guarded =[],$timestamps=false, $appends= ['images','category_name'];
     function category()
     {
         return $this->belongsTo(categories::class,'categories_id');
@@ -17,6 +17,10 @@ class providers_categories extends Model
     {
         if($this->attributes['images']??'')
             return images::find(json_decode($this->attributes['images'],true));
+    }
+    function GetCategoryNameAttribute()
+    { 
+        return $this->category->name_ar;
     }
 
 }

@@ -12,7 +12,7 @@ class getMyCategoriesController extends index
 {
     public static function api()
     {
-        $records= providers_categories::where('providers_id',self::$account->id)->get();
+        $records= providers_categories::where('providers_id',self::$request->providerId??self::$account->id)->get();
         return [
             "status"=>$records->count()>0 ? 200:204,
             "categories"=>objects::ArrayOfObjects($records,"category_provider"),

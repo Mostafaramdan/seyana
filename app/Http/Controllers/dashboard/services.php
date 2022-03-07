@@ -14,7 +14,7 @@ class services extends dashboard
     }
     public function index(Request $request)
     {
-        $records= $this->model::query();
+        $records= $this->model::with('category');
         if($request->search){
             $records->where('name_ar','like','%'.$request->search.'%')
                     ->orWhere('name_en','like','%'.$request->search.'%');
@@ -34,5 +34,4 @@ class services extends dashboard
     {
         return response()->json(['records'=>$this->model::all()]);
     }
-
 }

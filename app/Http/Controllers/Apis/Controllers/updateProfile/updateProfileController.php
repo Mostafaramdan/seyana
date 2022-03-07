@@ -28,8 +28,8 @@ class updateProfileController extends index
                 'users_id'=>self::$account->id,
                 'tmp_phone'=>self::$request->phone,
                 'tmp_token'=>helper::UniqueRandomXChar(69,'tmp_token',['sessions']),
-                // 'code'=>helper::RandomXDigits(5)
-                'code'=>1234
+                'code'=>helper::RandomXDigits(4)
+                // 'code'=>1234
             ]);
             helper::sendSms( self::$request->phone, $session->code );
         }

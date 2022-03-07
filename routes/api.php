@@ -62,3 +62,4 @@ Route::ANY('/refuseOrder',[index::class, 'index']);
 Route::ANY('/finishOrder',[index::class, 'index']);
 Route::ANY('/addServiceToOrder',[index::class, 'index']);
 Route::ANY('/updateProviderProfile',[index::class, 'index']);
+Route::ANY('/deleteCategory',[index::class, 'index']);

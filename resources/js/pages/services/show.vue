@@ -5,8 +5,64 @@
             <div class="col">
                 <div class="card " >
                     <div class="card-body">
-                        <h5 class="card-title">الاسم بالعربي  : {{ record.name_ar }}</h5>
-                        <h5 class="card-title">الاسم بالانجليزي  : {{ record.name_en }}</h5>
+                         <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  الاسم بالعربي: </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.name_ar }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                         <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  الاسم بالانجليزي: </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.name_en }}</b>
+                            </div>
+                        </div>
+                        <hr>
+                         <div class="row" v-if="record.category">
+                            <div class="col-md-3 ">
+                                <label><h5 > القسم : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b>
+                                    <router-link :to="{name: 'categoriesShow', params:{id:record.categories_id}}">
+                                        {{record.category.name_ar }} 
+                                    </router-link>
+                                </b>
+                            </div>
+                        </div>
+                         <hr>
+                         <div class="row" v-if="record.category">
+                            <div class="col-md-3 ">
+                                <label><h5 > الدولة : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b>{{record.category.country.name_ar }}</b>
+                            </div>
+                        </div>
+                         <hr>
+                         <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  الضمان : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.warranty_period }} ({{record.warranty_type_ar }})</b>
+                            </div>
+                        </div>
+                         <hr>
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label><h5 >  السعر : </h5></label>
+                            </div>
+                            <div class="col-md-3">
+                                <b> {{record.price }}</b>
+                            </div>
+                        </div>
+                        <hr>
                     </div>
                 </div>
             </div>

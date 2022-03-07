@@ -2,7 +2,7 @@
     <div class="m-3" v-if="this.authorized.create">
     <form @submit.prevent="onSubmit" class="border border-5 border-primary rounded ">
         <h3>
-           أنشأ  قسم جديد
+           أنشأ  خدمة جديدة
         </h3>
         <hr>
         <div class="form-check ">
@@ -141,7 +141,7 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
     },
         metaInfo() {
         return {
-            title: `${this.$store.state.appName} -   أنشأ قسم جديد `,
+            title: `${this.$store.state.appName} -   أنشأ خدمة جديدة `,
         }
     }
 

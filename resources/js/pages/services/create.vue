@@ -2,7 +2,7 @@
     <div class="m-3" v-if="this.authorized.create">
     <form @submit.prevent="onSubmit" class="border border-5 border-primary rounded ">
         <h3>
-           أنشأ خدمة جديدة
+           أنشأ عنصر جديد
         </h3>
         <hr>
         <div class="form-check ">
@@ -62,7 +62,7 @@
             @choosen='record.categories_id = $event'
             :records_id='record.categories_id'
             column='name_ar'
-            label='القسم'
+            label='الخدمة'
             >
         </dropdown-menu>
         <hr>
@@ -133,7 +133,7 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
     },
     metaInfo() {
         return {
-            title: `${this.$store.state.appName} -   أنشأ خدمة جديدة `,
+            title: `${this.$store.state.appName} -   أنشأ عنصر جديد `,
         }
     }
   }

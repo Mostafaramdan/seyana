@@ -9,10 +9,10 @@ use App\Http\Controllers\Apis\Helper\helper ;
 
 class changePasswordController extends index
 {
-    public static function api(){
-
-    sessions::whereIn('id',index::$account->sessions->pluck('id')->toArray())->delete(); 
-    helper::changePassword();
-    return ['status'=>200];
+    public static function api()
+    {
+        sessions::whereIn('id',self::$account->sessions->pluck('id')->toArray())->delete(); 
+        helper::changePassword();
+        return ['status'=>200];
     }    
 }

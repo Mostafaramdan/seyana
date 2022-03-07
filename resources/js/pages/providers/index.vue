@@ -37,7 +37,9 @@
                         <th >#</th>
                         <th >الاسم</th>
                         <th >تليفون</th>
-                        <th >ايميل</th>
+                        <th >الايميل</th>
+                        <td>المنطقة</td>
+                        <td>الموافقة</td>
                         <th >#</th>
                     </tr>
                 </thead>
@@ -56,6 +58,13 @@
                         <td>{{record.name}}</td>
                         <td>{{record.phone}}</td>
                         <td>{{record.email}}</td>
+                        <td><router-link v-if="record.region" :to="{name:'regionsShow' , params: { id:record.regions_id }}"> {{ record.region.name_ar }} </router-link></td>
+                        <td >
+                            <label class="switch">
+                                <input type="checkbox" @click="toggle('is_approved',record.id)"  v-model="record.is_approved" >
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
                         <td>
                             <button class="btn btn-danger" @click="deleteRecord(index)" v-if="authorized.delete"><i class="fas fa-trash "></i></button>
                             <button class="btn btn-info update" @click="update(index)"  v-if="authorized.update"><i class="fas fa-edit"></i></button>

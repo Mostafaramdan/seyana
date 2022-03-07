@@ -3,19 +3,20 @@
     <form @submit.prevent="onSubmit" class="border border-5 border-primary rounded ">
         <h3>
            تعديل  اعدادات
+           <span  v-if="record.country">({{record.country.name_ar}})</span>
         </h3>
-        <hr>
-        <div class="form-check ">
+        <!-- <hr>
+        <div class="form-check " v-if="record.country">
             <dropdown-menu
                 model="countries"
                 @choosen='record.countries_id = $event'
-                :records_id='record.countries_id'
+                :records_id='record.country.id'
                 column='name_ar'
                 label='الدولة'
                 >
             </dropdown-menu>
             <hr>
-        </div>
+        </div> -->
         <div  class="form-check m-2 ">
             <label for="tags-phones">ادخل أرقام التليفونات</label>
             <b-form-tags input-id="tags-phones" v-model="phones" class="form-control" ></b-form-tags>
@@ -27,13 +28,23 @@
         </div>
         <hr>
         <div class="form-check ">
-            <label  > ادخل  سياسة الاستخدام بالعربي   </label>
+            <label  > ادخل  شروط واحكام المستخدمين  بالعربي   </label>
             <textarea type="text" v-model="record.policyTerms_ar" :class="['form-control' ]"  ></textarea>
         </div>
         <hr>
         <div class="form-check ">
-            <label  > ادخل  سياسة الاستخدام بالانجليزي   </label>
+            <label  > ادخل  شروط واحكام المستخدمين  بالانجليزي   </label>
             <textarea type="text" v-model="record.policyTerms_en" :class="['form-control' ]"  ></textarea>
+        </div>
+        <hr>
+        <div class="form-check ">
+            <label  > ادخل  شروط واحكام المندوبين  بالعربي   </label>
+            <textarea type="text" v-model="record.terms_provider_ar" :class="['form-control' ]"  ></textarea>
+        </div>
+        <hr>
+        <div class="form-check ">
+            <label  > ادخل  شروط واحكام المندوبين  بالانجليزي   </label>
+            <textarea type="text" v-model="record.terms_provider_en" :class="['form-control' ]"  ></textarea>
         </div>
         <hr>
         <div class="form-check ">
@@ -47,19 +58,20 @@
         </div>
         <hr>
         <div class="form-check ">
-            <label  > ادخل سياسة الامان بالعربي   </label>
-            <textarea type="text" v-model="record.privacy_ar" :class="['form-control' ]"  ></textarea>
-        </div>
-        <hr>
-        <div class="form-check ">
-            <label  > ادخل سياسة الامان بالانجليزي   </label>
-            <textarea type="text" v-model="record.privacy_en" :class="['form-control' ]"  ></textarea>
-        </div>
-        <hr>
-        <div class="form-check ">
             <label  > ادخل الرسوم </label>
             <input type="number" v-model="record.fees" :class="['form-control' ]"  >
         </div>
+        <hr>
+        <div class="form-check ">
+            <label  > ادخل الضريبة </label>
+            <input type="number" v-model="record.tax" :class="['form-control' ]"  >
+        </div>
+        <hr>
+        <div class="form-check ">
+            <label  > ادخل القيمة المضافة </label>
+            <input type="number" v-model="record.value_added_tax" :class="['form-control' ]"  >
+        </div>
+        <hr>
 
         <div class="form-check ">
             <label  > ادخل نطاق البحث بالكيلومتر </label>

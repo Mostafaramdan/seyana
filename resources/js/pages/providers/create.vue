@@ -78,6 +78,16 @@
             >
         </dropdown-menu>
         <hr>
+        <dropdown-menu
+            model="regions"
+            url='dropdown/districts/regions'
+            @choosen='record.regions_id = $event'
+            :records_id='record.regions_id'
+            column='name_ar'
+            label='المنقطة'
+            >
+        </dropdown-menu>
+        <hr>
         <div id="my-strictly-unique-vue-upload-multiple-image" style="display: flex; justify-content: center;">
             <vue-upload-multiple-image
             @upload-success="uploadImageSuccess"

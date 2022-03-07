@@ -17,7 +17,7 @@ class getDistrictsController extends index
                           ->get();
         return [
             "status"=>$records->count()?200:204,
-            "districts"=>objects::ArrayOfObjects($records,"city"),
+            "districts"=>objects::ArrayOfObjects($records,"district"),
         ];
     }
 }

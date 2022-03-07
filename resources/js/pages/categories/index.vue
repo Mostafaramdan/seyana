@@ -15,6 +15,12 @@
                     </select>
                 </div>
                 <div class="form-group" >
+                    <label   >الدولة  </label>
+                    <select class="custom-select" v-model="filterByCountry">
+                        <option  v-for="(country,i) in countries" :key="i" :value="country.id">{{country.name_ar}} </option>
+                    </select>
+                </div>
+                <div class="form-group" >
                     <label   >نوع الترتيب  </label>
                     <select class="custom-select" v-model="filterType">
                         <option value="ASC">تصاعدي </option>
@@ -34,6 +40,7 @@
                         <th >#</th>
                         <th >الاسم بالعربي </th>
                         <th >الاسم بالانجليزي </th>
+                        <th >الدولة </th>
                         <th >صورة </th>
                         <th>التفعيل</th>
                         <th >#</th>
@@ -44,6 +51,7 @@
                         <td>{{record.id}}</td>
                         <td>{{record.name_ar}}</td>
                         <td>{{record.name_en}}</td>
+                        <td v-if="record.country">{{record.country.name_ar}}</td>
                         <td><a :href="record.image.image" target="_blank" ><img :src="record.image.image" style="height:100px;width:100px"></a></td>
                         <td v-if="record.image">
                             <label class="switch">
@@ -78,6 +86,8 @@ export default {
             filterBy:'id',
             filterType:'DESC',
             timeOut :false,
+            filterByCountry:'',
+            countries:[]
         }
     },
     methods:{
@@ -101,6 +111,7 @@ export default {
             let response = await this.Api('GET','categories',this.features());
             this.records=response.data.records ;
             this.totalPages=response.data.totalPages ;
+            this.countries = response.data.countries;
         },
          async deleteRecord(index){
 
@@ -115,6 +126,7 @@ export default {
                 'search':this.search,
                 'filterBy':this.filterBy,
                 'filterType':this.filterType,
+                'countries_id':this.filterByCountry
             };
         }
     },
@@ -124,7 +136,7 @@ export default {
     },
     metaInfo() {
         return {
-            title: `${this.$store.state.appName} -   الاقسام `,
+            title: `${this.$store.state.appName} -   الخدمات `,
         }
     },
     watch :{

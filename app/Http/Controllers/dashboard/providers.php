@@ -14,7 +14,7 @@ class providers extends dashboard
     }
     public function index(Request $request)
     {
-        $records= $this->model::query();
+        $records= $this->model::with(['region']);
         if($request->search){
             $records->where('name','like','%'.$request->search.'%');
         }
@@ -49,6 +49,7 @@ class providers extends dashboard
             'categories_ids'=>$request->categories_ids,
             'balance'=>$request->balance,
             'companies_id'=>$request->companies_id,
+            'regions_id'=>$request->regions_id,
             'images'=>$request->images,
             'password'=>\Hash::make($request->password),
         ]);

@@ -36,12 +36,12 @@
                     </router-link>
                     <router-link :to="{name: 'categories'}">
                         <b-list-group-item :active="$route.name.includes('categories')">
-                             الاقسام
+                             الخدمات
                         </b-list-group-item >
                     </router-link>
                     <router-link :to="{name: 'services'}">
                         <b-list-group-item :active="$route.name.includes('services')">
-                             الخدمات
+                             العناصر
                         </b-list-group-item >
                     </router-link>
                     <router-link :to="{name: 'countries'}"  >

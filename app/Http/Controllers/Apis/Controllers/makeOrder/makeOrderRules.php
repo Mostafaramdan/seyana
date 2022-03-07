@@ -56,6 +56,7 @@ class makeOrderRules extends index
             "voucherId.exists"        =>400,
 
             "providerId.required"       =>400,
+            "providerId.exists"       =>405,
         ];
 
         $messagesAr=[

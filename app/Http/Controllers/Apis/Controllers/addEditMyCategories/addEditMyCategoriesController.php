@@ -9,6 +9,7 @@ use App\Http\Controllers\Apis\Resources\objects;
 use App\Models\providers_categories;
 use App\Models\images;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class addEditMyCategoriesController extends index
 {

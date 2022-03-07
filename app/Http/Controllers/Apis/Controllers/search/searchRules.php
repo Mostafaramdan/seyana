@@ -13,7 +13,7 @@ class searchRules extends index
     public static function rules (){
 
         $rules=[
-            "apiToken"              =>"required|",
+            // "apiToken"              =>"required|",
             "page"      =>"required|numeric"
         ];
 
@@ -55,6 +55,6 @@ class searchRules extends index
         $Validation = helper::{$ValidationFunction}(self::$request->all(), $rules, $messages,self::$lang=="ar"?$messagesAr:$messagesEn);
         if ($Validation !== null) {    return $Validation;    }
 
-        return helper::validateAccount()??null;
+        // return helper::validateAccount()??null;
     }
 }

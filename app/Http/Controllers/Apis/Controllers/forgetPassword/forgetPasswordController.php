@@ -11,17 +11,14 @@ class forgetPasswordController extends index
 {
     public static function api()
     {
-
-    sessions::whereIn('id',self::$account->sessions->pluck('id')->toArray())->delete();
-    $session =  sessions::createUpdate([
-                    self::$account->getTable().'_id'=>self::$account->id,
-                    'tmp_token'=>helper::UniqueRandomXChar(69,'tmp_token',['sessions']),
-                    // 'code'=>helper::RandomXDigits(5)
-                    'code'=>1234
-                ]);
-    // helper::sendSms( self::$account->phone, $session->code );
-    return ['status'=>200,'tmpToken'=>$session->tmp_token];
-
+        sessions::whereIn('id',self::$account->sessions->pluck('id')->toArray())->delete();
+        $session =  sessions::createUpdate([
+                        self::$account->getTable().'_id'=>self::$account->id,
+                        'tmp_token'=>helper::UniqueRandomXChar(69,'tmp_token',['sessions']),
+                        'code'=>helper::RandomXDigits(4)
+                        // 'code'=>1234
+                    ]);
+        helper::sendSms( self::$account->phone, $session->code );
+        return ['status'=>200,'tmpToken'=>$session->tmp_token];
     }
-
 }

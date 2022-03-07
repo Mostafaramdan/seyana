@@ -10,8 +10,8 @@ use App\Models\countries;
 
 class getCountriesController extends index
 {
-    public static function api(){
-
+    public static function api()
+    {
         $records=  countries::where('is_active',1)->get();
         return [
             "status"=>$records->count()?200:204,

@@ -19,7 +19,9 @@ class registerProviderRules extends index
             "email"    =>"unique:users,email|unique:users,email",
             'fireBaseToken'    =>"nullable",
             "password" =>"required|min:6|max:20",
-            'identityImages' => 'required|array|min:2|max:2'
+            'identityImages' => 'required|array|min:2|max:2',
+            'districtId' =>'required|exists:regions,id'
+
         ];
 
         $messages=[
@@ -49,6 +51,8 @@ class registerProviderRules extends index
             'identityImages.min'      =>405,
             'identityImages.min'      =>405,
 
+            "districtId.required" =>405,
+            "districtId.exists" =>405,
         ];
 
         $messagesAr=[
@@ -73,6 +77,10 @@ class registerProviderRules extends index
 
             "lang.required"     =>"يجب ادخال اللغة ",
             "lang.in"           =>" ar , en يجب ادخال اللغة بشكل صحيح ",
+
+            "districtId.required"=>"يجب ادخال الحي ",
+            "districtId.in"      =>"يجب ادخال نوع النظام التشغيل بشكل صحيح",
+
         ];
 
         $messagesEn=[

@@ -2,7 +2,7 @@
     <div class="m-3" v-if="this.authorized.update">
     <form @submit.prevent="onSubmit" class="border border-5 border-primary rounded ">
         <h3>
-           تعديل خدمة
+           تعديل العنصر
         </h3>
         <hr>
         <div class="form-check ">
@@ -132,7 +132,7 @@ import VueUploadMultipleImage from 'vue-upload-multiple-image'
     },
     metaInfo() {
         return {
-            title: `${this.$store.state.appName} -   تعديل خدمة  `,
+            title: `${this.$store.state.appName} -   تعديل العنصر  `,
         }
     }
   }

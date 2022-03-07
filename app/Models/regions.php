@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class regions extends Model
 {
     use HasFactory;
-    protected  $fillable=['name_ar','name_en','regions_id','countries_id'],$appends=['']
+    protected  $fillable=['name_ar','name_en','regions_id','countries_id'],$appends=['country_name']
     ;
     public $timestamps=false;
 
@@ -24,5 +24,11 @@ class regions extends Model
     public static function allActive()
     {
         return self::orderBy('id','DESC')->get()->where('deleted_at',null)->where('is_active',1);
+    }
+    function getCountryNameAttribute()
+    {
+        if($this->region)
+            return $this->region->country->name_ar;
+
     }
 }

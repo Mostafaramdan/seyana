@@ -42,6 +42,8 @@
                     <tr >
                         <th >#</th>
                         <th >الحالة </th>
+                        <th>المستخدم</th>
+                        <th>المنطقة</th>
                         <th >سعر الخدمات </th>
                         <th >الرسوم</th>
                         <th >الاجمالي</th>
@@ -61,6 +63,8 @@
                     <tr v-for="(record,index) in records" :key="index">
                         <td>{{record.id}}</td>
                         <td>{{record.status}}</td>
+                        <td><router-link :to="{name:'usersShow' , params: { id:record.users_id }}"> {{ record.user.name }} </router-link></td>
+                        <td><router-link :to="{name:'regionsShow' , params: { id:record.user.regions_id }}"> {{ record.user.region.name_ar }} </router-link></td>
                         <td>{{record.servives_price}}</td>
                         <td>{{record.fees}} % </td>
                         <td>{{record.total}}  </td>

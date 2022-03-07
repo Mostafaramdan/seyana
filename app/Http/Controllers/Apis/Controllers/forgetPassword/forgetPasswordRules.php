@@ -40,6 +40,12 @@ class forgetPasswordRules extends index
         $ValidationFunction=self::$request->showAllErrors==1?'showAllErrors':'Validator';
         $Validation = helper::{$ValidationFunction}(self::$request->all(), $rules, $messages,self::$lang=="ar"?$messagesAr:$messagesEn);
         if ($Validation !== null) {    return $Validation;    }
+        if(!self::$account){
+            return [
+                'status'=>415,
+                'message'=>self::$messages['validateAccount'][self::$request->phone?'415':'416']
+            ];
+        }
     }
 
 }

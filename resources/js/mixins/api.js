@@ -11,7 +11,8 @@ export default {
             if(url != 'login' && localStorage.getItem('login_at') < (new Date()).getTime() - (1000*60*60*8)){
                 let response= await this.axios({
                     method: method,
-                    url: this.baseUrlDashboard+url,data,
+                    url: this.baseUrlDashboard+url,
+                    data,
                     headers: {
                         'Authorization': `${this.$store.getters.getUser.apiToken}`,
                         "Content-Type": "application/json",
@@ -33,7 +34,7 @@ export default {
                         "Content-Type": "application/json",
                         "Access-Control-Allow-Origin": "*"
                     },
-                    params: data,
+                    params: method=='GET'? data: '',
                     data
                 })
                 .catch(function (error) {

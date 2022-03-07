@@ -20,6 +20,7 @@ class registerRules extends index
             'image'    =>"nullable",
             'fireBaseToken'    =>"nullable",
             "password" =>"required|min:6|max:20",
+            'districtId' =>'required|exists:regions,id'
         ];
 
         $messages=[
@@ -44,8 +45,8 @@ class registerRules extends index
             "lang.required"      =>400,
             "lang.in"            =>405,
 
-            "isAndroid.required" =>405,
-            "isAndroid.in"       =>405
+            "districtId.required" =>405,
+            "districtId.exists" =>405,
         ];
 
         $messagesAr=[
@@ -67,9 +68,9 @@ class registerRules extends index
 
             "password.required" =>"يجب ادخال الرقم السري",
             "password.min"      =>"يجب ان لا يقل الرقم السري عن 6 ارقام او حروف",
-
-            "isAndroid.required"=>"يجب ادخال نوع النظام التشغيل ",
-            "isAndroid.in"      =>"يجب ادخال نوع النظام التشغيل بشكل صحيح",
+           
+            "districtId.required"=>"يجب ادخال الحي ",
+            "districtId.in"      =>"يجب ادخال نوع النظام التشغيل بشكل صحيح",
 
             "lang.required"     =>"يجب ادخال اللغة ",
             "lang.in"           =>" ar , en يجب ادخال اللغة بشكل صحيح ",

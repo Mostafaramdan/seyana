@@ -35,7 +35,7 @@
                 <span>يجب إدخال الكود بشكل صحيح</span>
             </div>
         </div>
-        <div class="form-check ">
+        <!-- <div class="form-check ">
             <label  > ادخل القيمة مقابل 1 دولار  </label>
             <input type="text"  v-model="record.value_in_dollar" :class="['form-control' ,{'is-valid':validateValue_in_dollar },{'is-invalid':!validateValue_in_dollar}]"  >
             <div class="valid-feedback">
@@ -44,7 +44,7 @@
             <div class="invalid-feedback">
                 <span>يجب إدخال الكود بشكل صحيح</span>
             </div>
-        </div>
+        </div> -->
 
 
         <hr>
@@ -70,7 +70,7 @@
         return {
             loading : false,
             record:{
-                value_in_dollar:0,
+                value_in_dollar:1,
                 name_ar:'',
                 name_en:'',
                 code:'',
@@ -89,13 +89,13 @@
     },
     computed: {
         validateCode(){
-            return this.record.code.length > 2
+            return this.record.code.length > 1
         },
         validateName_ar(){
-            return this.record.name_ar.length > 3
+            return this.record.name_ar.length > 1
         },
         validateName_en(){
-            return this.record.name_en.length > 3
+            return this.record.name_en.length > 1
         },
         validateValue_in_dollar(){
             return this.record.value_in_dollar > 0

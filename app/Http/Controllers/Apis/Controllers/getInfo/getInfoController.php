@@ -7,26 +7,20 @@ use App\Http\Controllers\Apis\Helper\helper;
 use App\Http\Controllers\Apis\Controllers\index;
 use App\Http\Controllers\Apis\Resources\objects;
 use App\Models\app_settings;
+use App\Models\regions;
 
 class getInfoController extends index
 {
     public static function api()
     {
-        $record=  app_settings::first();
-        if(!$record){
-            app_settings::createUpdate([
-                'policyTerms_ar'=>"policyTerms_ar",
-                'policyTerms_en'=>"policyTerms_en",
-                'aboutUs_ar'=>"aboutUs_ar",
-                'aboutUs_en'=>"aboutUs_en",
-                'email'=>"email",
-                'phone'=>"phone",
-                'daysToDelivery'=>1,
-            ]);
-        }
+        if(self::$request->districtId)
+            $record=  app_settings::where('countries_id',regions::find(self::$request->districtId)->region->countries_id)->first();
+       else 
+            $record=  app_settings::first();
+
         return [
-            "status"=>200,
-            "info"=>objects::info($record)
+            "status"=>$record?200:204,
+            "info"=>!$record?:objects::info($record)
         ];
     }
 }

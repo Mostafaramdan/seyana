@@ -13,10 +13,9 @@
                     <tr >
                         <th >#</th>
                         <th >الدولة  </th>
-                        <th >سياسة الاستخدام  </th>
-                        <th >عن التطبيق  </th>
-                        <th >الامان  </th>
                         <th >الرسوم  </th>
+                        <th >الضريبة  </th>
+                        <th >القيمة المضافة  </th>
                         <th >نطاق البحث </th>
                         <th >#</th>
                     </tr>
@@ -25,10 +24,9 @@
                     <tr v-for="(record,index) in records" :key="index">
                         <td>{{record.id}}</td>
                         <td>{{record.country.name_ar}}</td>
-                        <td>{{record.policyTerms_ar.replace(/^(.{15}[^\s]*).*/, "$1")  }}</td>
-                        <td>{{record.aboutUs_ar.replace(/^(.{15}[^\s]*).*/, "$1")  }}</td>
-                        <td>{{record.privacy_ar.replace(/^(.{15}[^\s]*).*/, "$1")  }}</td>
                         <td>{{record.fees}}</td>
+                        <td>{{record.tax}}</td>
+                        <td>{{record.value_added_tax}}</td>
                         <td>{{record.distance}} KM</td>
                         <td>
                             <button class="btn btn-danger delete" @click="deleteRecord(index)" v-if="authorized.delete"><i class="fas fa-trash "></i></button>

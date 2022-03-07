@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use App\Models\admins;
+use App\Models\regions;
 
 class dashboard extends Controller
 {
@@ -85,5 +86,14 @@ class dashboard extends Controller
     public static function permissions()
     {
         return response()->json(['status'=>200,'permissions'=>config('dashboard.permissions')]);
+    }
+     
+    public static function dropdownDistricts (Request $request , $model )
+    {
+        $records = regions::with('country')->where('regions_id','!=',null);
+        if($request->search){
+            $records->where($request->column,'like','%'.$request->search.'%');
+        }
+        return response()->json(['status'=>200,'records'=>$records->forPage(0,50)->get()]);
     }
 }

@@ -8,6 +8,8 @@
                         <h5 class="card-title">الاسم  : {{ record.name }}</h5>
                         <h5 class="card-title">الايميل  : {{ record.email }}</h5>
                         <h5 class="card-title">التليفون  : {{ record.phone }}</h5>
+                        <h5 class="card-title" v-if="record.region">المنطقة  : 
+                            <router-link :to="{name:'regionsShow' , params: { id: this.record.regions_id }}"> {{ record.region.name_ar }} </router-link></h5>
                         <h5 class="card-title">الرسوم  : {{ record.fees }}</h5>
                         <h5 class="card-title">الرصيد  : {{ record.balance }}</h5>
                     </div>

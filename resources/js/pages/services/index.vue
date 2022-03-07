@@ -32,10 +32,10 @@
                 <thead >
                     <tr >
                         <th >#</th>
-                        <th >الاسم بالعربي </th>
-                        <th >الاسم بالانجليزي </th>
+                        <th >الاسم  </th>
+                        <th >الدولة  </th>
                         <th >السعر  </th>
-                        <th >فترة الضمان (شهور) </th>
+                        <th >فترة الضمان  </th>
                         <th>التفعيل</th>
                         <th >#</th>
                     </tr>
@@ -53,9 +53,9 @@
                     <tr v-for="(record,index) in records" :key="index">
                         <td>{{record.id}}</td>
                         <td>{{record.name_ar}}</td>
-                        <td>{{record.name_en}}</td>
+                        <td> {{record.category.country.name_ar}}</td>
                         <td>{{record.price}}</td>
-                        <td>{{record.warranty_period}}</td>
+                        <td>{{record.warranty_period}} {{record.warranty_type_ar}} </td>
                         <td>
                             <label class="switch">
                                 <input type="checkbox" @click="toggle('is_active',record.id)"  v-model="record.is_active" >
@@ -135,7 +135,7 @@ export default {
     },
     metaInfo() {
         return {
-            title: `${this.$store.state.appName} -   الخدمات `,
+            title: `${this.$store.state.appName} -   العناصر `,
         }
     },
     watch :{

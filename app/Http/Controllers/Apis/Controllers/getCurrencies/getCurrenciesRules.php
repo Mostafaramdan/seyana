@@ -13,7 +13,7 @@ class getCurrenciesRules extends index
     public static function rules ()
     {
         $rules=[
-            "page"      =>"required|numeric"
+            // "page"      =>"required|numeric"
         ];
 
         $messages=[

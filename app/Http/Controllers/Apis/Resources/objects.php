@@ -31,10 +31,10 @@ class objects extends index
     public static function currency ($record)
     {
         $object = [];
-        $object['id'] = $record->id;
-        $object['name'] = $record->{'name_'.self::$lang};
-        $object['code'] = $record->code;
-        $object['value_in_dollar'] = $record->value_in_dollar;
+        $object['id'] = (int)$record->id;
+        $object['name'] = (string)$record->{'name_'.self::$lang};
+        $object['code'] = (string) $record->code;
+        $object['value_in_dollar'] = (float)$record->value_in_dollar;
 
         return $object;
     }
@@ -51,7 +51,7 @@ class objects extends index
         $object['lang'] = $record->lang;
         $object['fees']= $record->fees ;
         !$record->currency ? :$object['currency']= self::currency($record->currency );
-        !$record->region ? :$object['city']= self::region($record->region );
+        !$record->region ? :$object['district']= self::district($record->region );
 
         return $object;
     }
@@ -80,10 +80,11 @@ class objects extends index
         $object['balance'] = $record->balance;
         $object['description'] = $record->description;
         $object['phone'] = $record->phone;
+        !$record->currency ? :$object['currency']= self::currency($record->currency );
         $record->company ? $object['company'] = $record->company:null;;
-        $object['categories'] = self::ArrayOfObjects($record->categories??[],'category');
+        $object['categoriesNames'] = $record->providers_categories->pluck('category_name');
         $object['location'] = self::location($record->location);
-        !$record->city ? :$object['city'] = self::region($record->city);
+        !$record->region ? :$object['district']= self::district($record->region );
         $object['reviews'] = self::ArrayOfObjects($record->reviews??[],'review');
         $object['images'] = self::ArrayOfObjects($record->images??[],'image');
         $object['reviewCount'] = $record->reviews->count();
@@ -120,6 +121,7 @@ class objects extends index
     {
 
         $object = [];
+        $object['id'] = $record->id;
         $object['category'] = self::category($record->category);
         $object['description']=$record->description;
         !$record->images? :$object['images'] = self::ArrayOfObjects($record->images,'image');
@@ -155,8 +157,10 @@ class objects extends index
         $object = [];
         $object['aboutUs']=$record['aboutUs_'.self::$lang];
         $object['policyTerms']=$record['policyTerms_'.self::$lang];
+        $object['termsProvider']=$record['terms_provider_'.self::$lang];
         $object['privacy']=$record['privacy_'.self::$lang];
         $object['emails'] = $record->emails;
+        $object['fees'] = (float)$record->fees;
         $object['phones'] = $record->phones;
         return $object;
     }
@@ -195,6 +199,17 @@ class objects extends index
         $object = [];
         $object['id'] = $record->id;
         $object['name'] = $record->{'name_'.self::$lang};
+        $object['country'] = self::country($record->country);
+        return $object;
+    }
+
+    public static function district ($record)
+    {
+        $object = [];
+        $object['id'] = $record->id;
+        $object['name'] = $record->{'name_'.self::$lang};
+        $object['city'] = self::city($record->region);
+
         return $object;
     }
     public static function product ($record)
@@ -250,7 +265,7 @@ class objects extends index
         $categories = []; 
         foreach($categories_id as $category_id){
             $categories[]=[
-                'category_id'=>$category_id,
+                'category_id'=>(int)$category_id,
                 'category'  =>self::category(categories::find($category_id)),
                 'carts'=> self::ArrayOfObjects($record->carts->where('category_id',$category_id),'cart')
             ];

@@ -74,9 +74,9 @@ class helper extends generalHelp
 
 	public static function sendSms($phone,$code)
     {
-        $userNameSms= 'SyanaTech';
-        $passwordSms= '114477';
-        $url='http://www.vip1sms.com/smartsms/api/sendsms.php?username='. $userNameSms.'&password='.$passwordSms.'&message='.$code.'&sender=vip1sms&numbers='.$phone.'&unicode=u&return=full';
+        $userNameSms= 'syanatecho';
+		$passwordSms= '102030';
+        $url='https://www.sms4ksa.com/api/sendsms.php?username='. $userNameSms.'&password='.$passwordSms.'&message='.$code.'&sender=BIRMA&numbers='.$phone.'&unicode=e';
 		$url = preg_replace("/ /", "%20", $url);
 		self::get_web_page($url);
 	}

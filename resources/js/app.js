@@ -15,20 +15,10 @@ import VueMeta from 'vue-meta'
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import VueEasyLightbox from 'vue-easy-lightbox'
 import VueSwal from 'vue-swal'
-import * as VueGoogleMaps from 'vue2-google-maps'
 import dropdown from '@/components/layouts/dropdown.vue';
 import Multiselect from 'vue-multiselect'
 
 
-
-
-Vue.use(VueGoogleMaps, {
-    load: {
-      key: 'AIzaSyByYh0lGbV5SvW1Q8FhHJCU5jMdktuXI3Y',
-      libraries: 'places',
-
-    },
-})
 
 
 Vue.use(BootstrapVue);

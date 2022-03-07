@@ -26,7 +26,9 @@ class providers extends Model
     public function region(){
         return $this->belongsTo(regions::class,'regions_id');
     }
-
+    public function currency(){
+        return $this->belongsTo(currencies::class,'currencies_id');
+    }
     public function city(){
         return $this->belongsTo(regions::class,'city_id');
     }
@@ -50,7 +52,10 @@ class providers extends Model
     public function back_identity(){
         return $this->belongsTo(images::class,'back_identity_images_id');
     }
-
+    function providers_categories()
+    {
+        return $this->hasMany(providers_categories::class,'providers_id');
+    }
     public function favourites(){
         return $this->hasMany(favourites::class,'providers_id');
     }

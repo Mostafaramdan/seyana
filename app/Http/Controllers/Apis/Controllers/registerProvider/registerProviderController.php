@@ -26,7 +26,8 @@ class registerProviderController extends index
             'email'=>$request->email,
             'phone'=>$request->phone,
             'locations_id'=>$location->id??null,
-            'city_id'=>$request->cityId,
+            'regions_id'=>$request->districtId,
+            'currencies_id'=>$request->currencyId,
             'password'=>Hash::make($request->password),
             'apiToken'=>helper::UniqueRandomXChar(70,['users','providers']),
             'fireBaseToken'=>$request->fireBaseToken,
@@ -42,8 +43,8 @@ class registerProviderController extends index
         $record= providers::create($create);
         $session = sessions::createUpdate([
                 $record->getTable().'_id' =>$record->id,
-                // 'code'=>helper::RandomXDigits(5)
-                'code'=>1234
+                'code'=>helper::RandomXDigits(5)
+                // 'code'=>1234
             ]);
         helper::sendSms( $record->phone, $session->code );
         $token = helper::UniqueRandomXChar(69,'apiToken');

@@ -34,6 +34,7 @@
                         <th >الاسم</th>
                         <th >تليفون</th>
                         <th >ايميل</th>
+                        <th>المنطقة</th>
                         <th >#</th>
                     </tr>
                 </thead>
@@ -52,6 +53,7 @@
                         <td>{{record.name}}</td>
                         <td>{{record.phone}}</td>
                         <td>{{record.email}}</td>
+                        <td><router-link :to="{name:'regionsShow' , params: { id:record.regions_id }}"> {{ record.region.name_ar }} </router-link></td>
                         <td>
                             <button class="btn btn-danger delete" @click="deleteRecord(index)" v-if="authorized.delete"><i class="fas fa-trash "></i></button>
                             <button class="btn btn-info update" @click="update(index)"  v-if="authorized.update"><i class="fas fa-edit"></i></button>

@@ -13,7 +13,7 @@ class getServicesRules extends index
     public static function rules ()
     {
         $rules=[
-            "categoryId"     =>"required|exists:categories,id",
+            "categoryId"     =>"exists:categories,id",
             // "page"      =>"required|numeric"
         ];
 

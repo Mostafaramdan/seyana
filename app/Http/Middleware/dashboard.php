@@ -7,7 +7,7 @@ use Closure;
 use App\Models\admins;
 use Illuminate\Support\Str;
 
-class dashboard extends Middleware
+class dashboard 
 {
     public function handle($request, Closure $next)
     {
