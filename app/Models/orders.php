@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class orders extends Model
 {
     public $timestamps = false;
-    protected $guarded=[],$appends=['images','servives_price','total'],$with=['voucher','user'];
+    protected $guarded=[],$appends=['images','servives_price','total'],$with=['voucher','user','provider'];
 
     public function carts(){
         return $this->hasMany(carts::class,'orders_id');

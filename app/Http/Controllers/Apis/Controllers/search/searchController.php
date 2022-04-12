@@ -30,7 +30,6 @@ class searchController extends index
             "status"=>$response[1],
             "totalPages"=>$response[0],
             "providers"=>objects::ArrayOfObjects(self::$records,"provider"),
-
         ];
     }
 

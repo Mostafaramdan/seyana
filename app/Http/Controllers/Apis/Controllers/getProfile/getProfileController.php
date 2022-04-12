@@ -15,7 +15,7 @@ class getProfileController extends index
     {
         return [
             "status"=>200,
-            "user"=>objects::{Str::singular(self::$account->getTable())(self::$account),
+            Str::singular(self::$account->getTable())=>objects::{Str::singular(self::$account->getTable())}(self::$account)
         ];
     }
 }

@@ -7,12 +7,16 @@ use App\Http\Controllers\Apis\Helper\helper;
 use App\Http\Controllers\Apis\Controllers\index;
 use App\Http\Controllers\Apis\Resources\objects;
 use App\Models\orders;
+use App\Models\providers;
 
 class finishOrderController extends index
 {
     public static function api()
     {
-        orders::where('id',self::$request->orderId)->update(['status'=>'finished']);
+        $order= orders::find(self::$request->orderId);
+        $provider= $order->provider;
+        $order->update(['status'=>'finished']);
+        $provider->update(['balance'=>$order->provider->balance+$order->carts->sum('price')]);   
         return [
             "status"=>200
         ];

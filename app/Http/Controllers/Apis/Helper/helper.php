@@ -76,7 +76,7 @@ class helper extends generalHelp
     {
         $userNameSms= 'syanatecho';
 		$passwordSms= '102030';
-        $url='https://www.sms4ksa.com/api/sendsms.php?username='. $userNameSms.'&password='.$passwordSms.'&message='.$code.'&sender=BIRMA&numbers='.$phone.'&unicode=e';
+        $url='https://www.sms4ksa.com/api/sendsms.php?username=syanatecho&password=102030&message='.$code.'&sender=BIRMA&numbers='.$phone.'&unicode=e';
 		$url = preg_replace("/ /", "%20", $url);
 		self::get_web_page($url);
 	}

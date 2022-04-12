@@ -24,6 +24,13 @@ class loginController extends index
                 'message'=>self::$messages['validateAccount']['420']
             ];
         }
+
+        if(self::$account->getTable() == 'providers' && !self::$account->is_approved){
+            return [
+                'status'=>420,
+                'message'=>self::$messages['validateAccount']['422']
+            ];
+        }
         $token = helper::login(self::$account,self::$request->password);
         if(  $token){
             if(self::$request->has('lang'))

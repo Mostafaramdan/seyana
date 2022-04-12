@@ -5,9 +5,10 @@
             <button v-b-modal.new-swap-shift-modal class="btn  btn-outline-primary" type="button" id="button-addon1"><i class='fas fa-filter'></i> فلترة </button>
         </div>
         <button class="btn btn-primary m-2 create" @click="create" v-if="authorized.create">
-             إضافة
+             إضافة          
             <i class="fas fa-plus"></i>
         </button>
+        <a href="/export/exportUsers" class="btn btn-success">تحميل في ملف <i class="fas fa-file-excel"></i> </a>
         <b-modal id="new-swap-shift-modal" @ok="$router.push({  query: { ...$route.query,...features(),page:1 }})" hide-header-close title="فلترة النتائج" ok-hide='true' ok-title = "فلترة"  cancel-title = "إلفاء">
             <div class="d-block text-center">
                 <div class="form-group" >

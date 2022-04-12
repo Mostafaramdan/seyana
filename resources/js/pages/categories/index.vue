@@ -12,7 +12,7 @@
                     <select class="custom-select" v-model="filterBy">
                         <option value="name">الاسم </option>
                         <option value="id">التاريخ</option>
-                    </select>
+                    </select>providersproviders
                 </div>
                 <div class="form-group" >
                     <label   >الدولة  </label>
@@ -30,9 +30,10 @@
             </div>
         </b-modal>
         <button class="btn btn-primary m-2 create"  @click="create"  v-if="authorized.create">
-             إضافة
+            إضافة           
             <i class="fas fa-plus"></i>
         </button>
+        <a href="/export/exportCategories" class="btn btn-success">تحميل في ملف <i class="fas fa-file-excel"></i> </a>
         <div class="table-responsive">
             <table class="table table-striped table-dark table-bordered table-hover  mb-2"  >
                 <thead >

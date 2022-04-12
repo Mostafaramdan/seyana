@@ -13,7 +13,8 @@ return [
             "402"=>"تم الغاء تنشيط هذا الحساب",
             "419"=>"لم يتم التحقق من الحساب",
             "420"=>"من فضلك هذا الجوال مسجل كمزود خدمة يرجى ادخال جوال مستخدم !",
-            '421'=>'من فضلك هذا الجوال مسجل كمستخدم خدمة يرجى ادخال جوال مزود خدمة !'
+            '421'=>'من فضلك هذا الجوال مسجل كمستخدم خدمة يرجى ادخال جوال مزود خدمة !',
+            '422'=>'لم يتم الموافقة عليكم من قبل الادارة'
         ],
         "login"=>[
             "200"=>"تم تسجيل الدخول بنجاح",
@@ -93,6 +94,7 @@ return [
             "419"=>"this account hasn't been verified",
             '420'=>'Please this phone is registered as a provider, Please enter a user phone !',
             '421'=>'Please this phone is registered as a user, Please enter a provider phone !',
+            '422'=>'You have not been approved by the administration'
         ],
         "login"=>[
             "200"=>"login successfully",

@@ -29,3 +29,4 @@ Route::post('/permissions/{admin}',[App\Http\Controllers\dashboard\dashboard::cl
 route::post('test',function(){
     return App\Models\admins::all();
 });
+

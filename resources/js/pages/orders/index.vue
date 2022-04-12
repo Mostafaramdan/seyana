@@ -43,6 +43,7 @@
                         <th >#</th>
                         <th >الحالة </th>
                         <th>المستخدم</th>
+                        <th>مزود الخدمة</th>
                         <th>المنطقة</th>
                         <th >سعر الخدمات </th>
                         <th >الرسوم</th>
@@ -64,6 +65,11 @@
                         <td>{{record.id}}</td>
                         <td>{{record.status}}</td>
                         <td><router-link :to="{name:'usersShow' , params: { id:record.users_id }}"> {{ record.user.name }} </router-link></td>
+                        <td>
+                            <router-link  v-if="record.provider" :to="{name:'providersShow' , params: { id:record.providers_id }}">
+                                {{ record.provider.name }}
+                            </router-link>
+                        </td>
                         <td><router-link :to="{name:'regionsShow' , params: { id:record.user.regions_id }}"> {{ record.user.region.name_ar }} </router-link></td>
                         <td>{{record.servives_price}}</td>
                         <td>{{record.fees}} % </td>

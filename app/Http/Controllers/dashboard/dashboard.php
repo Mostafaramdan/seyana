@@ -8,6 +8,24 @@ use Illuminate\Support\Arr;
 use App\Models\admins;
 use App\Models\regions;
 
+use App\Models\users as usersModel;
+use App\Exports\users as usersExport;
+
+use App\Models\services as servicesModel;
+use App\Exports\services as servicesExport;
+
+use App\Models\providers as providersModel;
+use App\Exports\providers as providersExport;
+
+use App\Models\companies as companiesModel;
+use App\Exports\companies as companiesExport;
+
+use App\Models\categories as categoriesModel;
+use App\Exports\categories as categoriesExport;
+
+use Maatwebsite\Excel\Facades\Excel;
+
+
 class dashboard extends Controller
 {
     protected $model;
@@ -96,4 +114,30 @@ class dashboard extends Controller
         }
         return response()->json(['status'=>200,'records'=>$records->forPage(0,50)->get()]);
     }
+
+    public function exportUsers()
+    {
+        return Excel::download(new usersExport(usersModel::all()), 'العملاء.xlsx');
+    }
+    public function exportServices()
+    {
+        return Excel::download(new servicesExport(servicesModel::all()), 'العناصر.xlsx');
+    }
+
+    public function exportProviders()
+    {
+        return Excel::download(new providersExport(providersModel::all()), 'مزودي الخدمة.xlsx');
+    }
+
+    public function exportCompanies()
+    {
+        return Excel::download(new companiesExport(companiesModel::all()), 'الشركات.xlsx');
+    }
+
+    public function exportCategories()
+    {
+        return Excel::download(new categoriesExport(categoriesModel::all()), 'الخدمات.xlsx');
+    }
+    
+    
 }

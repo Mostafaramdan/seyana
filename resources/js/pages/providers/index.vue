@@ -30,6 +30,7 @@
              إضافة
             <i class="fas fa-plus"></i>
         </button> -->
+        <a href="/export/exportProviders" class="btn btn-success">تحميل في ملف <i class="fas fa-file-excel"></i> </a>
         <div class="table-responsive">
             <table class="table table-striped table-dark table-bordered table-hover  mb-2"  >
                 <thead >
@@ -39,6 +40,7 @@
                         <th >تليفون</th>
                         <th >الايميل</th>
                         <td>المنطقة</td>
+                        <td>الرصيد</td>
                         <td>الموافقة</td>
                         <th >#</th>
                     </tr>
@@ -59,6 +61,7 @@
                         <td>{{record.phone}}</td>
                         <td>{{record.email}}</td>
                         <td><router-link v-if="record.region" :to="{name:'regionsShow' , params: { id:record.regions_id }}"> {{ record.region.name_ar }} </router-link></td>
+                        <td>{{record.balance}}</td>
                         <td >
                             <label class="switch">
                                 <input type="checkbox" @click="toggle('is_approved',record.id)"  v-model="record.is_approved" >

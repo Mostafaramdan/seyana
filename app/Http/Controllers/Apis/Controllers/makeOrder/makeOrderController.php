@@ -36,15 +36,15 @@ class makeOrderController extends index
         $record=  orders::create([
             'fees'=>self::$account->fees,
             'users_id'=>self::$account->id,
-            'date'=>date('Y/m/d',self::$request->date),
-            'time'=>date('H:i:s',self::$request->time),
+            'date'=>date('Y-m-d'),
+            'time'=>date('H:i:s'),
             'materials'=>self::$request->materials,
             'description'=>self::$request->description,
             'vouchers_id'=>self::$request->voucherId,
             'providers_id'=>self::$request->providerId,
             'images'=>json_encode($images),
             'locations_id'=>$location->id,
-            'created_at'=>date('now'),
+            'created_at'=>date('Y-m-d H:i:s'),
         ]);
         foreach(self::$request->services as $service){
             $records=  carts::create([

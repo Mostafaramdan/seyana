@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use Illuminate\Http\Request;
 use App\Models\users as model;
+use App\services\usersService;
 
 class users extends dashboard
 {

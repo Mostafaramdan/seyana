@@ -27,6 +27,7 @@
              إضافة
             <i class="fas fa-plus"></i>
         </button>
+        <a href="/export/exportServices" class="btn btn-success">تحميل في ملف <i class="fas fa-file-excel"></i> </a>
         <div class="table-responsive">
             <table class="table table-striped table-dark table-bordered table-hover  mb-2"  >
                 <thead >
@@ -41,19 +42,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-show="false">
-                        <div class="text-center mb-3 d-flex justify-content-between">
-                            <b-spinner
-                                style="width: 6rem; height: 6rem;"
-                                variant="light"
-                                key="light">
-                            </b-spinner>
-                        </div>
-                    </tr>
                     <tr v-for="(record,index) in records" :key="index">
                         <td>{{record.id}}</td>
                         <td>{{record.name_ar}}</td>
-                        <td> {{record.category.country.name_ar}}</td>
+                        <td> <template v-if="record.category">{{   record.category.country.name_ar}}</template></td>
                         <td>{{record.price}}</td>
                         <td>{{record.warranty_period}} {{record.warranty_type_ar}} </td>
                         <td>

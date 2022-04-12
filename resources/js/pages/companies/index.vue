@@ -24,9 +24,10 @@
             </div>
         </b-modal>
         <button class="btn btn-primary m-2 create"  @click="create"  v-if="authorized.create">
-             إضافة
+             إضافة              
             <i class="fas fa-plus"></i>
         </button>
+        <a href="/export/exportCompanies" class="btn btn-success">تحميل في ملف <i class="fas fa-file-excel"></i> </a>
         <div class="table-responsive">
             <table class="table table-striped table-dark table-bordered table-hover  mb-2"  >
                 <thead >

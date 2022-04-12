@@ -7,7 +7,7 @@
         <hr>
         <div class="form-check ">
             <label  > ادخل الاسم بالعربي  </label>
-            <input type="text" v-model="record.name_ar" :class="['form-control' ,{'is-valid':validateName_ar },{'is-invalid':!validateName_ar}]"  >
+            <input type="text" v-model="record.name_ar" :class="['form-control' ,{'is-valid':validateName_ar && record.name_ar },{'is-invalid':!validateName_ar && record.name_ar}]"  >
             <div class="valid-feedback">
                      صحيح
             </div>
@@ -17,7 +17,7 @@
         </div>
          <div class="form-check ">
             <label  > ادخل عدد الاسم بالانجليزي  </label>
-            <input type="text" v-model="record.name_en" :class="['form-control' ,{'is-valid':validateName_en },{'is-invalid':!validateName_en}]"  >
+            <input type="text" v-model="record.name_en" :class="['form-control' ,{'is-valid':validateName_en && record.name_en },{'is-invalid':!validateName_en && record.name_en}]"  >
             <div class="valid-feedback">
                      صحيح
             </div>
@@ -28,7 +28,7 @@
         <br>
          <div class="form-check ">
             <label  > ادخل   السعر  </label>
-            <input type="number" v-model="record.price" :class="['form-control' ,{'is-valid':validatePrice },{'is-invalid':!validatePrice}]"  >
+            <input type="number" v-model="record.price" :class="['form-control' ,{'is-valid':validatePrice && record.price},{'is-invalid':!validatePrice && record.price}]"  >
             <div class="valid-feedback">
                      صحيح
             </div>
@@ -37,9 +37,9 @@
             </div>
         </div>
         <br>
-         <div class="form-check col-4">
-            <label  > ادخل  فترة الضمان (عدد الشهور)  </label>
-            <input type="number" v-model="record.warranty_period" :class="['form-control' ,{'is-valid':validateWarranty_period },{'is-invalid':!validateWarranty_period}]"  >
+         <div class="col-md-4" >
+            <label  > ادخل  فترة الضمان   </label>
+            <input type="number" v-model="record.warranty_period" :class="['form-control' ,{'is-valid':validateWarranty_period && record.warranty_period },{'is-invalid':!validateWarranty_period && record.warranty_period }]"  >
             <div class="valid-feedback">
                      صحيح
             </div>
@@ -47,6 +47,7 @@
                 <span>يجب إدخال فترة الضمان بشكل صحيح</span>
             </div>
         </div>
+        <br>
         <br>
         <div class=" col-4" >
             <label  > ادخل  نوع فترة الضمان (عدد الشهور)  </label>

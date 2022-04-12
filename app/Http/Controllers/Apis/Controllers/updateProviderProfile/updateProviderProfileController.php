@@ -34,7 +34,7 @@ class updateProviderProfileController extends index
         $session = sessions::createUpdate([
                 $record->getTable().'_id' =>$record->id,
                 // 'code'=>helper::RandomXDigits(5)
-                'code'=>1234
+                'code'=>helper::RandomXDigits(4)
             ]);
         helper::sendSms( $record->phone, $session->code );
     }

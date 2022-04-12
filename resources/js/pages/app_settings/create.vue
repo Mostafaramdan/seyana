@@ -57,6 +57,16 @@
         </div>
         <hr>
         <div class="form-check ">
+            <label  > ادخل الخصوصية  بالعربي   </label>
+            <textarea type="text" v-model="record.privacy_ar" :class="['form-control' ]"  ></textarea>
+        </div>
+        <hr>
+        <div class="form-check ">
+            <label  > ادخل الخصوصية بالانجليزي   </label>
+            <textarea type="text" v-model="record.privacy_en" :class="['form-control' ]"  ></textarea>
+        </div>
+        <hr>
+        <div class="form-check ">
             <label  > ادخل الرسوم </label>
             <input type="number" v-model="record.fees" :class="['form-control' ]"  >
         </div>

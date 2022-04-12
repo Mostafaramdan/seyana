@@ -50,6 +50,7 @@ class objects extends index
         $object['phone'] = $record->phone;
         $object['lang'] = $record->lang;
         $object['fees']= $record->fees ;
+        $object['balance']= $record->balance ;
         !$record->currency ? :$object['currency']= self::currency($record->currency );
         !$record->region ? :$object['district']= self::district($record->region );
 
@@ -94,6 +95,15 @@ class objects extends index
         !$record->front_identity ? : $object['frontIdentityImage'] = self::image($record->front_identity);
         !$record->back_identity ? : $object['backIdentityImage'] = self::image($record->back_identity);
         !$record->image ? : $object['image'] = self::image($record->image);
+        return $object;
+    }
+    public static function providerMin ($record)
+    {
+        if($record == null  ) {return null;}
+        $object = [];
+        $object['id'] = $record->id;
+        $object['name'] = $record->name;
+        $object['location'] = self::location($record->location);
         return $object;
     }
 

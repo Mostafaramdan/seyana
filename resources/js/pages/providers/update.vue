@@ -61,7 +61,7 @@
         <br>
         <div class="form-check ">
             <label  > ادخل الرصيد  </label>
-            <input type="text" v-model="record.balance" :class="['form-control' ,{'is-valid':validateBalance },{'is-invalid':!validateBalance}]"  >
+            <input type="text" readonly v-model="record.balance" :class="['form-control' ,{'is-valid':validateBalance },{'is-invalid':!validateBalance}]"  >
             <div class="valid-feedback">
                      صحيح
             </div>

@@ -43,7 +43,7 @@ class registerProviderController extends index
         $record= providers::create($create);
         $session = sessions::createUpdate([
                 $record->getTable().'_id' =>$record->id,
-                'code'=>helper::RandomXDigits(5)
+                'code'=>helper::RandomXDigits(4)
                 // 'code'=>1234
             ]);
         helper::sendSms( $record->phone, $session->code );
